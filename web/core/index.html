@@ -46,6 +46,37 @@
             <section id="generator" class="main-feature hidden">
                 <!-- generate passwords for the user -->
                 <h2>Password Generator</h2>
+                <!-- 
+                    - user should be able to click a checkbox to enable or
+                        display a criteria
+                    - user should not be able to leave an enabled criteria blank
+                    - criteria: length, alphabetical characters, numbers,
+                        special characters (!, £, $, %, ^, &, *, (, ), -, _, +,
+                        =, {, }, [, ], `, |)
+                    - invalid: spaces, javascript?
+                -->
+                <form action="./" id="generator-form" class="main-form">
+                    <label>
+                        Password Length
+                        <input id="generator-length" name="generator-length" type="number" value="8" min="8" max="80" />
+                    </label>
+                    <label>
+                        Allow Lowercase Characters?
+                        <input id="generator-lowercase" name="generator-lowercase" type="checkbox" />
+                    </label>
+                    <label>
+                        Allow Numbers?
+                        <input id="generator-numbers" name="generator-numbers" type="checkbox" />
+                    </label>
+                    <label>
+                        Allow Special Characters?
+                        <input id="generator-special-characters" name="generator-special-characters" type="checkbox"/>
+                    </label>
+                    <input type="submit" value="Generate Password" />
+                </form>
+
+                <!-- Allow users to click a button to copy this -->
+                <p id="generator-password"></p>
             </section>
             <section id="validator" class="main-feature hidden">
                 <!-- validate passwords for the user -->

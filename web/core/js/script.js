@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     let menu = document.getElementById("menu");
     let app = document.getElementById("app");
     let appSection = document.getElementsByClassName("main-feature");
+    let appForm = document.getElementsByClassName("main-form");
 
     for (let i = 0; i < menuToggle.length; i++) {
         menuToggle[i].addEventListener("click", toggleMenu);
@@ -12,6 +13,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     for (let i = 0; i < menuListItem.length; i++) {
         menuListItem[i].addEventListener("click", changeAppSection);
+    }
+
+    for (let i = 0; i < appForm.length; i++) {
+        appForm[i].addEventListener("submit", handleFormSubmission);
     }
 
     function changeAppSection(event) {
@@ -27,6 +32,66 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
 
             toggleMenu(event);
+        }
+    }
+
+    function generatePassword(event) {
+        let length = document.getElementById("generator-length").value;
+        let allowingLowercase = document.getElementById("generator-lowercase").checked;
+        let allowingNumbers = document.getElementById("generator-numbers").checked;
+        let allowingSpecialCharacters = document.getElementById("generator-special-characters").checked;
+
+        let password = "";
+
+        for (let i = 0; i < length; i++) {
+            // random number (0 - 2)
+            let type = Math.floor(Math.random() * 3);
+
+            switch (type) {
+                case 0:
+                    // Alphabetical character
+                    let alphabeticalCharacter;
+
+                    if (allowingLowercase) {
+
+                    } else {
+
+                    }
+                    
+                    break;
+                case 1:
+                    // Number
+                    let number = Math.random() * 10;
+                    password += number;
+
+                    break;
+                case 2:
+                    // Special character
+                    let specialCharacter;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        console.log(length);
+        console.log(allowingNumbers);
+        console.log(allowingSpecialCharacters);
+    }
+
+    function handleFormSubmission(event) {
+        event.preventDefault();
+
+        switch (event.target.id) {
+            case "generator-form":
+                generatePassword(event);
+                break;
+            case "manager-form":
+                break;
+            case "validator-form":
+                break;
+            default:
+                break;
         }
     }
 
