@@ -43,7 +43,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         let password = "";
 
-        for (let i = 0; i < length; i++) {
+        let i = 0;
+        while (i < length) {
             // random number (0 - 2)
             let type = Math.floor(Math.random() * 3);
 
@@ -53,30 +54,90 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     let alphabeticalCharacter;
 
                     if (allowingLowercase) {
+                        let isLowercase = Math.floor(Math.random() * 2);
 
+                        if (isLowercase == 1) {
+                            alphabeticalCharacter = String.fromCharCode(
+                                Math.floor(Math.random() * 26 + 97)
+                            );
+                        } else {
+                            alphabeticalCharacter = String.fromCharCode(
+                                Math.floor(Math.random() * 26 + 65)
+                            );
+                        }
                     } else {
-
+                        alphabeticalCharacter = String.fromCharCode(
+                            Math.floor(Math.random() * 26 + 65)
+                        );
                     }
-                    
+
+                    password += alphabeticalCharacter;
+
                     break;
                 case 1:
+                    if (!allowingNumbers) continue;
+
                     // Number
-                    let number = Math.random() * 10;
+                    let number = Math.floor(Math.random() * 10);
                     password += number;
 
                     break;
                 case 2:
+                    if (!allowingSpecialCharacters) continue;
+
                     // Special character
                     let specialCharacter;
+
+                    let asciiSection = Math.floor(Math.random() * 5);
+
+                    switch (asciiSection) {
+                        case 0:
+                            // 33 - 47
+                            specialCharacter = String.fromCharCode(
+                                Math.floor(Math.random() * 15 + 33)
+                            );
+
+                            break;
+                        case 1:
+                            // 58 - 64
+                            specialCharacter = String.fromCharCode(
+                                Math.floor(Math.random() * 7 + 58)
+                            );
+
+                            break;
+                        case 2:
+                            // 91
+                            specialCharacter = String.fromCharCode(91);
+
+                            break;
+                        case 3:
+                            // 93 - 96
+                            
+                            specialCharacter = String.fromCharCode(
+                                Math.floor(Math.random() * 4 + 93)
+                            );
+
+                            break;
+                        case 4:
+                            // 123 - 125
+                            specialCharacter = String.fromCharCode(
+                                Math.floor(Math.random() * 3 + 123)
+                            );
+
+                            break;
+                    }
+
+                    password += specialCharacter;
+
                     break;
                 default:
                     break;
             }
-        }
 
-        console.log(length);
-        console.log(allowingNumbers);
-        console.log(allowingSpecialCharacters);
+            i += 1;
+        }
+        
+        document.getElementById("generator-password").textContent = password;
     }
 
     function handleFormSubmission(event) {
