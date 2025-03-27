@@ -6,3 +6,34 @@ body, html {
     margin: 0;
     padding: 0;
 }
+
+h1 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+h1, h2 {
+    margin: 0;
+    height: 15vh;
+
+    text-align: center;
+}
+
+.main-feature {
+    height: 85vh;
+}
+
+.hidden {
+    display: none;
+}
+
+#menu {
+    position: absolute;
+    top: 0;
+    /* z-index: 2; */
+    
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(180, 40, 90, 0.8);
+}
