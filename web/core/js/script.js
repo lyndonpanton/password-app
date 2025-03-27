@@ -25,6 +25,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
             } else {
                 appSection[i].classList.add("hidden");
             }
+
+            toggleMenu(event);
         }
     }
 
